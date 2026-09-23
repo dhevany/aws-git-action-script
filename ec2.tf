@@ -6,7 +6,7 @@
 
 resource "aws_instance" "appServer1" {
 
-  ami           = var.ami_id
+  ami           = data.aws_ami.amazon_linux_2023.id
   instance_type = var.instance_type
 
   subnet_id = aws_subnet.publicSubnet1.id
