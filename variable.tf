@@ -180,3 +180,13 @@ variable "ami_id" {
   type        = string
   default     = "ami-xxxxxxxxxxxxxxxxx"
 }
+
+
+# =========================================================
+# SSH ACCESS CIDR
+# =========================================================
+
+variable "ssh_cidr" {
+  description = "Public IP address allowed to SSH into EC2"
+  type        = string
+}

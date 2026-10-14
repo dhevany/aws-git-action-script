@@ -1,5 +1,5 @@
 
- =========================================================
+#=========================================================
 # EC2 INSTANCE 1
 # Public Subnet 1 - Availability Zone 1
 # =========================================================
@@ -12,10 +12,10 @@ resource "aws_instance" "appServer1" {
   subnet_id = aws_subnet.publicSubnet1.id
 
   vpc_security_group_ids = [
-    aws_security_group.ec2SG.id
+    aws_security_group.web.id
   ]
 
-  user_data = file("user-data.sh")
+  user_data = file("${path.module}/user-data.sh")
 
   tags = {
     Name        = "App-Server-01"

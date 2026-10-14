@@ -188,7 +188,7 @@ resource "aws_route_table_association" "publicSubnet2Association" {
 
 resource "aws_security_group" "albSG" {
 
-  name        = var.alb_sg_name
+  name = var.alb_sg_name
 
   description = "Allow HTTP and HTTPS inbound traffic to ALB"
 
@@ -268,7 +268,7 @@ resource "aws_security_group" "albSG" {
 # Only allow HTTP traffic coming from the ALB SG
 # =========================================================
 
-resource "aws_security_group" "ec2SG" {
+resource "aws_security_group" "web" {
 
   name = var.ec2_sg_name
 
@@ -303,6 +303,8 @@ resource "aws_security_group" "ec2SG" {
 
   egress {
 
+    description = "Allow outbound traffic"
+
     from_port = 0
 
     to_port = 0
@@ -313,8 +315,6 @@ resource "aws_security_group" "ec2SG" {
       "0.0.0.0/0"
     ]
   }
-
-
   tags = {
 
     Name = var.ec2_sg_name
